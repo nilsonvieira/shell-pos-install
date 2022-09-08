@@ -4,10 +4,10 @@ function googleChrome (){
     echo "---------------------------------"
     echo "Installing Google Chrome..."
     echo "---------------------------------"
-    cd ./debPacks
+    cd /home/$USER/Downloads
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo apt install ./google-chrome-stable_current_amd64.deb
-    cd ..
+    cd -
 }
 
 function termiusDeb (){
@@ -45,7 +45,11 @@ function insomniaDeb (){
 function webappsDeb (){
     echo "---------------------------------"
     echo "Installing Webapps..."
-    echo "---------------------------------"    
+    echo "---------------------------------" 
+    cd /home/$USER/Downloads
+    wget http://packages.linuxmint.com/pool/main/w/webapp-manager/webapp-manager_1.2.5_all.deb  
+    sudo apt install ./webapp-manager_1.2.5_all.deb 
+    cd -
 }
 
 function virtualboxDeb (){
