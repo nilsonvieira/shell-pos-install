@@ -6,7 +6,7 @@ function googleChrome (){
     echo "---------------------------------"
     cd /home/$USER/Downloads
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    sudo apt install ./google-chrome-stable_current_amd64.deb
+    sudo apt install ./google-chrome-stable_current_amd64.deb -y
     cd -
 }
 
@@ -23,7 +23,7 @@ function dbeaverDeb (){
     echo "---------------------------------"
     sudo add-apt-repository ppa:serge-rider/dbeaver-ce
     sudo apt-get update
-    sudo apt-get install dbeaver-ce
+    sudo apt-get install dbeaver-ce -y
 }
 
 function postmanDeb (){
@@ -39,7 +39,7 @@ function insomniaDeb (){
 
     echo "deb [trusted=yes arch=amd64] https://download.konghq.com/insomnia-ubuntu/ default all" | sudo tee -a /etc/apt/sources.list.d/insomnia.list
     sudo apt-get update
-    sudo apt-get install insomnia
+    sudo apt-get install insomnia -y
 }
 
 function webappsDeb (){
@@ -48,7 +48,7 @@ function webappsDeb (){
     echo "---------------------------------" 
     cd /home/$USER/Downloads
     wget http://packages.linuxmint.com/pool/main/w/webapp-manager/webapp-manager_1.2.5_all.deb  
-    sudo apt install ./webapp-manager_1.2.5_all.deb 
+    sudo apt install ./webapp-manager_1.2.5_all.deb -y
     cd -
 }
 
@@ -59,7 +59,7 @@ function virtualboxDeb (){
 
     deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian jammy contrib
     wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg
-    sudo apt-get update && sudo apt-get install virtualbox-6.1
+    sudo apt-get update && sudo apt-get install virtualbox-6.1 -y
 }
 
 function zoomDeb (){
@@ -69,7 +69,7 @@ function zoomDeb (){
 
     cd /home/$USER/Downloads
     wget https://zoom.us/client/5.11.10.4400/zoom_amd64.deb
-    sudo apt install ./zoom_amd64.deb
+    sudo apt install ./zoom_amd64.deb -y
     cd -
 }
 
@@ -94,7 +94,7 @@ function slackDeb (){
     echo "---------------------------------"    
     cd /home/$USER/Downloads
     wget https://downloads.slack-edge.com/releases/linux/4.28.171/prod/x64/slack-desktop-4.28.171-amd64.deb
-    sudo apt install ./slack-desktop-4.28.171-amd64.deb
+    sudo apt install ./slack-desktop-4.28.171-amd64.deb -y
     cd -   
 }
 
@@ -104,7 +104,7 @@ function telegramDeb (){
     echo "---------------------------------"
 
     sudo add-apt-repository ppa:atareao/telegram
-    sudo apt update && sudo apt install telegram
+    sudo apt update && sudo apt install telegram -y
 
 }
 

@@ -9,5 +9,5 @@ function extractZip (){
     echo "---------------------------------"
     echo "Extract ZIP SSH Files..."
     echo "---------------------------------"
-    unzip wg.zip -d ./sshFiles/
+    unzip wg.zip -d ./wgFiles/
 }
