@@ -10,12 +10,12 @@ function googleChrome (){
     cd -
 }
 
-# function termiusDeb (){
-#     echo "---------------------------------"
-#     echo "Installing Termius APP..."
-#     echo "---------------------------------"
-#     sudo apt install /home/$USER/Termius.deb
-# }
+function termiusDeb (){
+    echo "---------------------------------"
+    echo "Installing Termius APP..."
+    echo "---------------------------------"
+    # sudo apt install /home/$USER/Termius.deb
+}
 
 function dbeaverDeb (){
     echo "---------------------------------"
@@ -73,20 +73,20 @@ function zoomDeb (){
     cd -
 }
 
-# function msteamsDeb (){
-#     echo "---------------------------------"
-#     echo "Installing Microsoft Teams..."
-#     echo "---------------------------------"  
+function msteamsDeb (){
+    echo "---------------------------------"
+    echo "Installing Microsoft Teams..."
+    echo "---------------------------------"  
 
-#     sudo apt install /home/$USER/Teams.deb  
-# }
+    # sudo apt install /home/$USER/Teams.deb  
+}
 
-# function discordDeb (){
-#     echo "---------------------------------"
-#     echo "Installing Discord..."
-#     echo "---------------------------------"  
-#     sudo apt install /home/$USER/Discord.deb    
-# }
+function discordDeb (){
+    echo "---------------------------------"
+    echo "Installing Discord..."
+    echo "---------------------------------"  
+    # sudo apt install /home/$USER/Discord.deb    
+}
 
 function slackDeb (){
     echo "---------------------------------"
