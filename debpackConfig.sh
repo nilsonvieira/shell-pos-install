@@ -90,7 +90,8 @@ function telegramDeb (){
 function discordDeb (){
     echo "---------------------------------"
     echo "Installing Discord..."
-    echo "---------------------------------"    
+    echo "---------------------------------"  
+    sudo apt install /home/$USER/Discord.deb    
 }
 
 function slackDeb (){
