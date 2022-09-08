@@ -81,12 +81,6 @@ function msteamsDeb (){
     sudo apt install /home/$USER/Teams.deb  
 }
 
-function telegramDeb (){
-    echo "---------------------------------"
-    echo "Installing Telegram..."
-    echo "---------------------------------"    
-}
-
 function discordDeb (){
     echo "---------------------------------"
     echo "Installing Discord..."
@@ -98,6 +92,19 @@ function slackDeb (){
     echo "---------------------------------"
     echo "Installing Slack..."
     echo "---------------------------------"    
+    cd /home/$USER/Downloads
+    wget https://downloads.slack-edge.com/releases/linux/4.28.171/prod/x64/slack-desktop-4.28.171-amd64.deb
+    sudo apt install ./slack-desktop-4.28.171-amd64.deb
+    cd -   
 }
 
+function telegramDeb (){
+    echo "---------------------------------"
+    echo "Installing Telegram..."
+    echo "---------------------------------"
+
+    sudo add-apt-repository ppa:atareao/telegram
+    sudo apt update && sudo apt install telegram
+
+}
 
