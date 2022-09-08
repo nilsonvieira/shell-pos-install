@@ -35,7 +35,11 @@ function postmanDeb (){
 function insomniaDeb (){
     echo "---------------------------------"
     echo "Installing Insomnia..."
-    echo "---------------------------------"    
+    echo "---------------------------------"
+
+    echo "deb [trusted=yes arch=amd64] https://download.konghq.com/insomnia-ubuntu/ default all" | sudo tee -a /etc/apt/sources.list.d/insomnia.list
+    sudo apt-get update
+    sudo apt-get install insomnia
 }
 
 function webappsDeb (){
