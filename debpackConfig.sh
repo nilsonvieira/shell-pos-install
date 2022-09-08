@@ -76,7 +76,9 @@ function zoomDeb (){
 function msteamsDeb (){
     echo "---------------------------------"
     echo "Installing Microsoft Teams..."
-    echo "---------------------------------"    
+    echo "---------------------------------"  
+
+    sudo apt install /home/$USER/Teams.deb  
 }
 
 function telegramDeb (){
