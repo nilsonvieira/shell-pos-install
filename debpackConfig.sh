@@ -66,6 +66,11 @@ function zoomDeb (){
     echo "---------------------------------"
     echo "Installing Zoom Meeting..."
     echo "---------------------------------"    
+
+    cd /home/$USER/Downloads
+    wget https://zoom.us/client/5.11.10.4400/zoom_amd64.deb
+    sudo apt install ./zoom_amd64.deb
+    cd -
 }
 
 function msteamsDeb (){
