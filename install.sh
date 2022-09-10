@@ -33,5 +33,6 @@ zoomDeb
 telegramDeb
 # discordDeb
 slackDeb
+spotifyDeb
 
 updateSystem
