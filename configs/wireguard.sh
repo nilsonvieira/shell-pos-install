@@ -1,13 +1,15 @@
 #!/bin/bash
 
-function extractZip (){
+function wgConfig () {
+    
     echo "---------------------------------"
-    echo "Extract ZIP SSH Files..."
+    echo "Copying WG Files..."
     echo "---------------------------------"
-    unzip ssh.zip -d ./sshFiles/
+    
+    sudo cp -rp ./wgFiles/* /etc/wireguard/
+    
+    echo "---------------------------------"
+    echo "USE COMMAND FOR USE VPN: systemctl start wg-quick@wg0"
+    echo "---------------------------------"
 
-    echo "---------------------------------"
-    echo "Extract ZIP SSH Files..."
-    echo "---------------------------------"
-    unzip wg.zip -d ./wgFiles/
 }
