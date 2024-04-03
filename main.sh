@@ -17,7 +17,7 @@ while true; do
             reboot; break
             ;;
         [Nn]* ) 
-            hashicorp ; browser ; essetial ; databases; communicate ; music
+            commonPacks; hashicorp ; browser ; devops ; databases; communicate ; 
             ;;
         * ) 
             echo "Please answer Y or N."

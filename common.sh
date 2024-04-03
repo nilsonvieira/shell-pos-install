@@ -8,7 +8,7 @@ function updateSystem (){
 }
 
 function commonPacks (){
-    p_list="git ansible vim curl wget remmina* zenity flameshot alacarte htop btop resolvconf software-properties-common apt-transport-https"
+    p_list="git ansible vim curl wget remmina* zenity flameshot alacarte htop btop resolvconf software-properties-common apt-transport-https wireguard openssh-server"
     
     echo "---------------------------------"
     echo " Installing Common Packages...   "

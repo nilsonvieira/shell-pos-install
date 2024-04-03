@@ -21,6 +21,7 @@ function browser (){
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo apt install ./google-chrome-stable_current_amd64.deb -y
     cd -
+
     ## MICROSOFT EDGE
     echo "---------------------------------"
     echo " Installing Microsoft Edge..."
@@ -30,11 +31,16 @@ function browser (){
     sudo apt update && sudo apt install microsoft-edge-stable -y
 }
 
-function essetial (){
+function devops (){
     ## POSTMAN
     echo "---------------------------------"
     echo "Installing Postman..."
     echo "---------------------------------"
+    cd /home/$USER/Downloads
+    wget https://dl.pstmn.io/download/latest/linux_64 -O postman.tar.gz
+    sudo tar -xvf  postman.tar.gz -C /opt/
+    cd -
+    sudo install -t ~/.local/share/applications/ ./files/postman.desktop
 
     ## INSOMNIA
     echo "---------------------------------"
@@ -48,10 +54,49 @@ function essetial (){
     echo "---------------------------------"
     echo "Installing VirtualBox..."
     echo "---------------------------------"    
-
-    deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian jammy contrib
+    echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian jammy contrib' | sudo tee /etc/apt/sources.list.d/vbox.list
     wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg
     sudo apt-get update && sudo apt-get install virtualbox-6.1 -y
+
+    ## LENS
+    echo "---------------------------------"
+    echo "Installing Lens..."
+    echo "---------------------------------"
+    curl -fsSL https://downloads.k8slens.dev/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/lens-archive-keyring.gpg > /dev/null
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/lens-archive-keyring.gpg] https://downloads.k8slens.dev/apt/debian stable main" | sudo tee /etc/apt/sources.list.d/lens.list > /dev/null
+    sudo apt update && sudo apt install lens -y
+
+    ## KUBECTL
+    echo "---------------------------------"
+    echo "Installing Kubectl..."
+    echo "---------------------------------"
+    cd /home/$USER/Downloads
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    chmod +x kubectl
+    mkdir -p ~/.local/bin
+    mv ./kubectl ~/.local/bin/kubectl
+    cd -
+
+    ## DOCKER
+    echo "---------------------------------"
+    echo "Installing Docker..."
+    echo "---------------------------------"
+    for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
 }
 
 function databases (){
@@ -69,44 +114,17 @@ function communicate (){
     echo "---------------------------------"
     echo "Installing Zoom Meeting..."
     echo "---------------------------------"    
-
     cd /home/$USER/Downloads
-    wget https://zoom.us/client/5.11.10.4400/zoom_amd64.deb
+    wget https://zoom.us/client/latest/zoom_amd64.deb
     sudo apt install ./zoom_amd64.deb -y
     cd -
-
-    ## DISCORD
-    echo "---------------------------------"
-    echo "Installing Discord..."
-    echo "---------------------------------"  
-
-    ## SLACK
-    echo "---------------------------------"
-    echo "Installing Slack..."
-    echo "---------------------------------"    
-    cd /home/$USER/Downloads
-    wget https://downloads.slack-edge.com/releases/linux/4.28.171/prod/x64/slack-desktop-4.28.171-amd64.deb
-    sudo apt install ./slack-desktop-4.28.171-amd64.deb -y
-    cd -   
 
     ## TELEGRAM
     echo "---------------------------------"
     echo "Installing Telegram..."
     echo "---------------------------------"
-
     sudo add-apt-repository ppa:atareao/telegram
     sudo apt update && sudo apt install telegram -y
-}
-
-function music (){
-    echo "---------------------------------"
-    echo "Installing Spotify..."
-    echo "---------------------------------"
-
-    curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
-    echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-
-    sudo apt-get update && sudo apt-get install spotify-client
 }
 
 function code (){
@@ -119,4 +137,15 @@ function code (){
     rm -f packages.microsoft.gpg
     sudo apt install apt-transport-https
     sudo apt update && sudo apt install code -y
+
+
+    echo "---------------------------------"
+    echo " Installing Golang..."
+    echo "---------------------------------"
+    cd /home/$USER/Downloads
+    wget https://go.dev/dl/go1.22.1.linux-amd64.tar.gz
+    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz
+    export PATH=$PATH:/usr/local/go/bin
+    sudo echo "export PATH=$PATH:/usr/local/go/bin" >> $HOME/.profile
+    cd -
 }
