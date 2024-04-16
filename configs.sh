@@ -12,8 +12,8 @@ function sshConfig () {
     echo "---------------------------------"
 
     cd /home/$USER/Downloads
-    mkdir -p /home/$USER/.ssh/
-    tar -xvf sshfiles.tar.gz -C /home/$USER/.ssh/
+    unzip ssh.zip
+    mv .ssh /home/$USER/
     cd -
     
     echo "---------------------------------"
@@ -34,7 +34,8 @@ function wgConfig () {
     echo "---------------------------------"
     
     cd /home/$USER/Downloads
-    sudo tar -xvf wireguard.tar.gz -C /etc/wireguard/
+    sudo unzip wireguard.zip 
+    sudo mv wg* /etc/wireguard/
     cd -
     
     echo "---------------------------------"
@@ -42,3 +43,7 @@ function wgConfig () {
     echo "---------------------------------"
 
 }
+
+gitConfig
+sshConfig
+wgConfig
