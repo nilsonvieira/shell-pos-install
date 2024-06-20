@@ -1,26 +1,19 @@
 #!/bin/bash
 
-source common.sh
-source thirdPacks.sh
+# Script principal para instalação e configuração pós-instalação
 
-echo "---------------------------------"
-echo "  Starting Initial Configs ..."
-echo "---------------------------------"
-updateSystem
-echo "---------------------------------"
-echo "  The System has need Restarted..."
-echo "---------------------------------"
-while true; do
-    read -r -p "Do you wish to reboot the system? (Y/N): " answer
-    case $answer in
-        [Yy]* ) 
-            reboot; break
-            ;;
-        [Nn]* ) 
-            commonPacks; hashicorp ; browser ; devops ; databases; communicate ; 
-            ;;
-        * ) 
-            echo "Please answer Y or N."
-            ;;
-    esac
-done
+source ./scripts/common.sh
+source ./scripts/configs.sh
+source ./scripts/thirdPacks.sh
+
+# Função principal
+main() {
+    echo "Iniciando instalação e configuração..."
+    update_system
+    install_common_packages
+    configure_system
+    install_third_party_packages
+    echo "Instalação e configuração concluídas!"
+}
+
+main
